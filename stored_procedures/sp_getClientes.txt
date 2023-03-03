@@ -1,0 +1,71 @@
+CREATE PROC sp_GetClientes
+AS 
+BEGIN
+	SELECT * FROM Cliente;
+END
+GO
+
+-- byid
+CREATE PROC sp_GetClienteId
+		@ClienteId int
+AS 
+BEGIN
+	SELECT * 
+	FROM Cliente
+	WHERE IdCliente = @ClienteId;
+END
+GO
+
+
+-- crear cliente
+CREATE PROC sp_CrearCliente
+		@ClienteId int output,
+		@Nombres varchar(max),
+		@Apellidos varchar(max),
+		@Telefono varchar(max),
+		@Email varchar(max),
+		@Pais varchar(max)
+		-- fecha de creacion es dinamica en cada incercion con current
+AS 
+BEGIN
+	INSERT INTO Cliente(Nombres, Apellidos, Telefono, Email, Pais, FechaCreacion)VALUES(@Nombres, @Apellidos, @Telefono, @Email, @Pais, CURRENT_TIMESTAMP)
+            SELECT @ClienteId = SCOPE_IDENTITY();
+END
+GO
+
+-- actualizar
+CREATE PROC sp_ActualizarCliente
+		@ClienteId int output,
+		@Nombres varchar(max),
+		@Apellidos varchar(max),
+		@Telefono varchar(max),
+		@Email varchar(max),
+		@Pais varchar(max)
+		-- fecha de creacion es dinamica en cada incercion con current
+AS 
+BEGIN
+	UPDATE Cliente SET 
+				Nombres=@Nombres, 
+				Apellidos=@Apellidos, 
+				Telefono=@Telefono, 
+				Email=@Email, 
+				Pais=@Pais
+			WHERE IdCliente=@ClienteId
+			SELECT @ClienteId = SCOPE_IDENTITY();
+END
+GO
+
+
+-- delete
+CREATE PROC sp_BorrarCliente
+		@ClienteId int
+AS
+BEGIN
+	DELETE FROM Cliente WHERE IdCliente = @ClienteId;
+END 
+GO 
+
+
+
+
+-- ejecutar de forma grafica, se posiciona sobre el sp y se lñe da "execute stored procedure"
