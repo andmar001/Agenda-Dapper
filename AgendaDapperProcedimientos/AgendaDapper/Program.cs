@@ -7,8 +7,7 @@ builder.Services.AddControllersWithViews();
 
 
 //Se añade como inyección de dependencias el repositorio (MUY IMPORTANTE)
-//builder.Services.AddScoped<IRepositorio, Repositorio>();
-builder.Services.AddScoped<IRepositorio, RepositorioContrib>();
+builder.Services.AddScoped<IRepositorio, Repositorio>();
 
 
 var app = builder.Build();
