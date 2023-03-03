@@ -1,0 +1,6 @@
+instalar dapper contrib desde el manejador de paquetes
+Dapper.Contrib
+
+Es una libreria que tiene metodos CRUD predefinidos para manejar la informacion por medio de un modelo
+
+https://riptutorial.com/dapper-contrib/learn/100000/getting-started

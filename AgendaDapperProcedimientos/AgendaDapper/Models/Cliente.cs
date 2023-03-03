@@ -4,7 +4,7 @@ using Dapper.Contrib.Extensions;
 
 namespace AgendaDapperProcedimientos.Models
 {
-    [Table("Cliente")]
+    [Table("Cliente")] //usado para el uso de dapper contrib - importar Dapper.Contrib.Extensions  - cliente "nombre de la tabla en la base de datos"
     public class Cliente
     {
         [Key]
